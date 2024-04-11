@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "VFIsGFmflgI6l+nj+ifUixWnwIew0lvu2akqcZY7ZyU=",
+  "Source": "FoodShareNetAPI",
+  "BasePath": "_content/FoodShareNetAPI",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

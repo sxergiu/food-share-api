@@ -1,0 +1,17 @@
+C:\Users\sergiu.varga\source\repos\FoodShareNet\Repository\bin\Debug\net8.0\FoodShareNet.Repository.deps.json
+C:\Users\sergiu.varga\source\repos\FoodShareNet\Repository\bin\Debug\net8.0\FoodShareNet.Repository.dll
+C:\Users\sergiu.varga\source\repos\FoodShareNet\Repository\bin\Debug\net8.0\FoodShareNet.Repository.pdb
+C:\Users\sergiu.varga\source\repos\FoodShareNet\Repository\bin\Debug\net8.0\FoodShareNet.Domain.dll
+C:\Users\sergiu.varga\source\repos\FoodShareNet\Repository\bin\Debug\net8.0\FoodShareNet.Domain.pdb
+C:\Users\sergiu.varga\source\repos\FoodShareNet\Repository\obj\Debug\net8.0\FoodShareNet.Repository.csproj.AssemblyReference.cache
+C:\Users\sergiu.varga\source\repos\FoodShareNet\Repository\obj\Debug\net8.0\FoodShareNet.Repository.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\sergiu.varga\source\repos\FoodShareNet\Repository\obj\Debug\net8.0\FoodShareNet.Repository.AssemblyInfoInputs.cache
+C:\Users\sergiu.varga\source\repos\FoodShareNet\Repository\obj\Debug\net8.0\FoodShareNet.Repository.AssemblyInfo.cs
+C:\Users\sergiu.varga\source\repos\FoodShareNet\Repository\obj\Debug\net8.0\FoodShareNet.Repository.csproj.CoreCompileInputs.cache
+C:\Users\sergiu.varga\source\repos\FoodShareNet\Repository\obj\Debug\net8.0\FoodShar.F722F97A.Up2Date
+C:\Users\sergiu.varga\source\repos\FoodShareNet\Repository\obj\Debug\net8.0\FoodShareNet.Repository.dll
+C:\Users\sergiu.varga\source\repos\FoodShareNet\Repository\obj\Debug\net8.0\refint\FoodShareNet.Repository.dll
+C:\Users\sergiu.varga\source\repos\FoodShareNet\Repository\obj\Debug\net8.0\FoodShareNet.Repository.pdb
+C:\Users\sergiu.varga\source\repos\FoodShareNet\Repository\obj\Debug\net8.0\ref\FoodShareNet.Repository.dll
+C:\Users\sergiu.varga\source\repos\FoodShareNet\Repository\bin\Debug\net8.0\FoodShareNet.Repository.runtimeconfig.json
+C:\Users\sergiu.varga\source\repos\FoodShareNet\Repository\obj\Debug\net8.0\FoodShareNet.Repository.genruntimeconfig.cache

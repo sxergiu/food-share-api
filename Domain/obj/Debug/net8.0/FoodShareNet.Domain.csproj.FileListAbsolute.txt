@@ -1,0 +1,11 @@
+C:\Users\sergiu.varga\source\repos\FoodShareNet\Domain\bin\Debug\net8.0\FoodShareNet.Domain.deps.json
+C:\Users\sergiu.varga\source\repos\FoodShareNet\Domain\bin\Debug\net8.0\FoodShareNet.Domain.dll
+C:\Users\sergiu.varga\source\repos\FoodShareNet\Domain\bin\Debug\net8.0\FoodShareNet.Domain.pdb
+C:\Users\sergiu.varga\source\repos\FoodShareNet\Domain\obj\Debug\net8.0\FoodShareNet.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\sergiu.varga\source\repos\FoodShareNet\Domain\obj\Debug\net8.0\FoodShareNet.Domain.AssemblyInfoInputs.cache
+C:\Users\sergiu.varga\source\repos\FoodShareNet\Domain\obj\Debug\net8.0\FoodShareNet.Domain.AssemblyInfo.cs
+C:\Users\sergiu.varga\source\repos\FoodShareNet\Domain\obj\Debug\net8.0\FoodShareNet.Domain.csproj.CoreCompileInputs.cache
+C:\Users\sergiu.varga\source\repos\FoodShareNet\Domain\obj\Debug\net8.0\FoodShareNet.Domain.dll
+C:\Users\sergiu.varga\source\repos\FoodShareNet\Domain\obj\Debug\net8.0\refint\FoodShareNet.Domain.dll
+C:\Users\sergiu.varga\source\repos\FoodShareNet\Domain\obj\Debug\net8.0\FoodShareNet.Domain.pdb
+C:\Users\sergiu.varga\source\repos\FoodShareNet\Domain\obj\Debug\net8.0\ref\FoodShareNet.Domain.dll
