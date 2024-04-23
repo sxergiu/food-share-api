@@ -9,3 +9,4 @@ C:\Users\sergiu.varga\source\repos\FoodShareNet\Domain\obj\Debug\net8.0\FoodShar
 C:\Users\sergiu.varga\source\repos\FoodShareNet\Domain\obj\Debug\net8.0\refint\FoodShareNet.Domain.dll
 C:\Users\sergiu.varga\source\repos\FoodShareNet\Domain\obj\Debug\net8.0\FoodShareNet.Domain.pdb
 C:\Users\sergiu.varga\source\repos\FoodShareNet\Domain\obj\Debug\net8.0\ref\FoodShareNet.Domain.dll
+C:\Users\sergiu.varga\source\repos\FoodShareNet\Domain\obj\Debug\net8.0\FoodShareNet.Domain.sourcelink.json

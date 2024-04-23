@@ -6,7 +6,7 @@
         public int DonationId { get; set; }
         public int CourierId { get; set; }
         public int Quantity { get; set; }
-        DateTime CreationDate { get; set; }
+        public DateTime CreationDate { get; set; }
         public int OrderStatusId { get; set; }
 
     }

@@ -11,9 +11,10 @@ using FoodShareNetAPI.DTO.Courier;
 [ApiController]
 public class CourierController : ControllerBase
 {
-
-    public CourierController()
+    private readonly FoodShareNetDbContext _context;
+    public CourierController(FoodShareNetDbContext context)
     {
+        _context = context;
     }
 
     [ProducesResponseType(StatusCodes.Status200OK)]
@@ -21,7 +22,14 @@ public class CourierController : ControllerBase
     [HttpGet]
     public async Task<ActionResult<IList<CourierDTO>>> GetAllAsync()
     {
-        return Ok();
+        var couriers = await _context.Couriers.Select(c => new CourierDTO
+        {
+            Id = c.Id,
+            Name = c.Name,
+            Price = c.Price,
+        }).ToListAsync();
+
+        return Ok(couriers);
     }
 
 }

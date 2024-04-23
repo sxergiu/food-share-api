@@ -6,6 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+//Add-Migration "migrationName"
+//Update-Database
+
 namespace FoodShareNet.Repository.Data
 {
     public class FoodShareNetDbContext : DbContext
@@ -20,7 +23,8 @@ namespace FoodShareNet.Repository.Data
                 new City { Id = 1, Name = "Bucuresti" },
                 new City { Id = 2, Name = "Cluj-Napoca" },
                 new City { Id = 3, Name = "Timisoara" },
-                new City { Id = 4, Name = "Iasi" }
+                new City { Id = 4, Name = "Iasi" },
+                new City { Id = 5, Name = "Constanta"}
             );
 
             modelBuilder.Entity<Courier>().HasData(

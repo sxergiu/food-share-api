@@ -3,14 +3,6 @@
   "WorkspaceRootPath": "C:\\Users\\sergiu.varga\\source\\repos\\FoodShareNet\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{8197B4B2-5487-4DAE-8CBA-4B6AD7F13398}|FoodShareNet\\FoodShareNetAPI.csproj|c:\\users\\sergiu.varga\\source\\repos\\foodsharenet\\foodsharenet\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8197B4B2-5487-4DAE-8CBA-4B6AD7F13398}|FoodShareNet\\FoodShareNetAPI.csproj|solutionrelative:foodsharenet\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8197B4B2-5487-4DAE-8CBA-4B6AD7F13398}|FoodShareNet\\FoodShareNetAPI.csproj|c:\\users\\sergiu.varga\\source\\repos\\foodsharenet\\foodsharenet\\controllers\\donorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8197B4B2-5487-4DAE-8CBA-4B6AD7F13398}|FoodShareNet\\FoodShareNetAPI.csproj|solutionrelative:foodsharenet\\controllers\\donorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{8197B4B2-5487-4DAE-8CBA-4B6AD7F13398}|FoodShareNet\\FoodShareNetAPI.csproj|c:\\users\\sergiu.varga\\source\\repos\\foodsharenet\\foodsharenet\\controllers\\beneficiarycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8197B4B2-5487-4DAE-8CBA-4B6AD7F13398}|FoodShareNet\\FoodShareNetAPI.csproj|solutionrelative:foodsharenet\\controllers\\beneficiarycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
@@ -27,40 +19,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\sergiu.varga\\source\\repos\\FoodShareNet\\FoodShareNet\\Program.cs",
-              "RelativeDocumentMoniker": "FoodShareNet\\Program.cs",
-              "ToolTip": "C:\\Users\\sergiu.varga\\source\\repos\\FoodShareNet\\FoodShareNet\\Program.cs",
-              "RelativeToolTip": "FoodShareNet\\Program.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAACAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-11T09:18:43.135Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "DonorController.cs",
-              "DocumentMoniker": "C:\\Users\\sergiu.varga\\source\\repos\\FoodShareNet\\FoodShareNet\\Controllers\\DonorController.cs",
-              "RelativeDocumentMoniker": "FoodShareNet\\Controllers\\DonorController.cs",
-              "ToolTip": "C:\\Users\\sergiu.varga\\source\\repos\\FoodShareNet\\FoodShareNet\\Controllers\\DonorController.cs",
-              "RelativeToolTip": "FoodShareNet\\Controllers\\DonorController.cs",
-              "ViewState": "AQIAADMAAAAAAAAAAAAowDIAAABWAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-11T09:15:30.007Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
               "Title": "BeneficiaryController.cs",
               "DocumentMoniker": "C:\\Users\\sergiu.varga\\source\\repos\\FoodShareNet\\FoodShareNet\\Controllers\\BeneficiaryController.cs",
               "RelativeDocumentMoniker": "FoodShareNet\\Controllers\\BeneficiaryController.cs",
               "ToolTip": "C:\\Users\\sergiu.varga\\source\\repos\\FoodShareNet\\FoodShareNet\\Controllers\\BeneficiaryController.cs",
               "RelativeToolTip": "FoodShareNet\\Controllers\\BeneficiaryController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAADIAAAAAAAAA",
+              "ViewState": "AQIAABAAAAAAAAAAAAAQwBwAAAAQAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-11T09:14:08.167Z",
+              "WhenOpened": "2024-04-23T11:15:22.309Z",
               "EditorCaption": ""
             }
           ]

@@ -1,6 +1,9 @@
-﻿using FoodShareNetAPI.DTO.Beneficiary;
+﻿using FoodShareNet.Domain.Entities;
+using FoodShareNet.Repository.Data;
+using FoodShareNetAPI.DTO.Beneficiary;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace FoodShareNetAPI.Controllers
 {
@@ -8,9 +11,11 @@ namespace FoodShareNetAPI.Controllers
     [ApiController]
     public class BeneficiaryController : ControllerBase
     {
-        public BeneficiaryController()
+        private readonly FoodShareNetDbContext _context;
+
+        public BeneficiaryController(FoodShareNetDbContext context)
         {
-            
+            _context = context;
         }
 
         [ProducesResponseType(typeof(IList<BeneficiaryDTO>),StatusCodes.Status200OK)]
@@ -19,10 +24,21 @@ namespace FoodShareNetAPI.Controllers
         [HttpGet]
         public async Task<ActionResult<List<BeneficiaryDTO>>> GetAllAsync()
         {
-            return Ok();
+
+            var beneficiaries = await _context.Beneficiaries
+                .Include(b => b.City)
+                .Select(b => new BeneficiaryDTO
+                {
+                    Id = b.Id,
+                    Name = b.Name,
+                    Address = b.Address,
+                    Capacity = b.Capacity,
+                    CityName = b.City.Name
+
+                }).ToListAsync();
+
+            return Ok(beneficiaries);
         }
-
-
 
 
         [ProducesResponseType(typeof(BeneficiaryDTO),
@@ -32,11 +48,23 @@ namespace FoodShareNetAPI.Controllers
         [HttpGet]
         public async Task<ActionResult<BeneficiaryDTO>> GetAsync(int? id)
         {
-            return Ok();
+            var beneficiaryDTO = await _context.Beneficiaries
+                .Select(b => new BeneficiaryDTO
+                {
+                    Id = b.Id,
+                    Name= b.Name,
+                    Address= b.Address,
+                    Capacity= b.Capacity,
+                    CityName = b.City.Name
+                }).FirstOrDefaultAsync(a => a.Id == id);
+
+            if( beneficiaryDTO == null )
+            {
+                return NotFound();
+            }
+
+            return Ok(beneficiaryDTO);
         }
-
-
-
 
         [ProducesResponseType(typeof(BeneficiaryDetailDTO),
             StatusCodes.Status201Created)]
@@ -44,13 +72,35 @@ namespace FoodShareNetAPI.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         [HttpPost]
         public async Task<ActionResult<BeneficiaryDetailDTO>>
-            CreateAsync(CreateBeneficiaryDTO createBeneficiaryDTO) //why not from body?
+            CreateAsync(CreateBeneficiaryDTO createBeneficiaryDTO) 
         {
-            return Ok();
+            if( !ModelState.IsValid )
+            {
+                return BadRequest(ModelState);
+            }
+
+            var beneficiary = new Beneficiary
+            {
+                Name = createBeneficiaryDTO.Name,
+                Address = createBeneficiaryDTO.Address,
+                CityId = createBeneficiaryDTO.CityId,
+                Capacity = createBeneficiaryDTO.Capacity
+            };
+
+            _context.Add(beneficiary);
+            await _context.SaveChangesAsync();
+
+            var beneficiaryEntityDTO = new BeneficiaryDetailDTO
+            {
+                Id = beneficiary.Id,
+                Name = beneficiary.Name,
+                Address = beneficiary.Address,
+                CityId = beneficiary.CityId,
+                Capacity = beneficiary.Capacity
+            };
+
+            return Ok(beneficiaryEntityDTO);
         }
-
-
-
 
 
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -61,10 +111,29 @@ namespace FoodShareNetAPI.Controllers
         public async Task<IActionResult>
             EditAsync(int id, EditBeneficiaryDTO editBeneficiaryDTO)
         {
-            return Ok();
+
+            if( id != editBeneficiaryDTO.Id )
+            {
+                return BadRequest("Invalid Id!");
+            }
+
+            var beneficiary = await _context.Beneficiaries
+                .FirstOrDefaultAsync(b => b.Id == editBeneficiaryDTO.Id);
+
+            if( beneficiary == null )
+            {
+                return NotFound();
+            }
+
+            beneficiary.Name = editBeneficiaryDTO.Name;
+            beneficiary.Address = editBeneficiaryDTO.Address;
+            beneficiary.CityId = editBeneficiaryDTO.CityId;
+            beneficiary.Capacity = editBeneficiaryDTO.Capacity;
+
+            await _context.SaveChangesAsync();  
+
+            return NoContent();
         }
-
-
 
 
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -73,7 +142,14 @@ namespace FoodShareNetAPI.Controllers
         [HttpDelete]
         public async Task<IActionResult> DeleteAsync(int id)
         {
-            return Ok();
+            var beneficiary = await _context.Beneficiaries.FindAsync(id);
+
+            if( beneficiary == null ) { return NotFound(); }    
+
+            _context.Beneficiaries.Remove(beneficiary);
+            await _context.SaveChangesAsync();
+
+            return NoContent();
         }
 
 
