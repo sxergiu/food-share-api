@@ -6,15 +6,16 @@ using FoodShareNetAPI.DTO.Beneficiary;
 using FoodShareNetAPI.DTO.Order;
 using OrderStatusEnum = FoodShareNet.Domain.Enums.OrderStatus;
 using FoodShareNetAPI.DTO.Courier;
+using FoodShareNet.Application.Interfaces;
 
 [Route("api/[controller]")]
 [ApiController]
 public class CourierController : ControllerBase
 {
-    private readonly FoodShareNetDbContext _context;
-    public CourierController(FoodShareNetDbContext context)
+    private readonly ICourierService _courierService;
+    public CourierController(ICourierService courierService)
     {
-        _context = context;
+        _courierService = courierService;
     }
 
     [ProducesResponseType(StatusCodes.Status200OK)]
@@ -22,13 +23,7 @@ public class CourierController : ControllerBase
     [HttpGet]
     public async Task<ActionResult<IList<CourierDTO>>> GetAllAsync()
     {
-        var couriers = await _context.Couriers.Select(c => new CourierDTO
-        {
-            Id = c.Id,
-            Name = c.Name,
-            Price = c.Price,
-        }).ToListAsync();
-
+        var couriers = await _courierService.GetCouriersAsync();
         return Ok(couriers);
     }
 

@@ -54,7 +54,7 @@ namespace FoodShareNet.Application.Services
 
             if(order == null)
             {
-                throw new NotFoundException("order", order.Id.ToString());
+                throw new NotFoundException("order", id);
             }
 
             return order;

@@ -10,12 +10,10 @@ using FoodShareNet.Application.Interfaces;
 [ApiController]
 public class OrderController : ControllerBase
 {
-    private readonly FoodShareNetDbContext _context;
     private readonly IOrderService _orderService;
-    public OrderController(FoodShareNetDbContext context,IOrderService orderService)
+    public OrderController(IOrderService orderService)
     {
         _orderService = orderService;
-        _context = context;
     }
 
     [ProducesResponseType(type: typeof(OrderDTO), StatusCodes.Status201Created)]
