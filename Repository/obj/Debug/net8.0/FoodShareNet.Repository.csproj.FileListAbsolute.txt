@@ -16,3 +16,5 @@ C:\Users\sergiu.varga\source\repos\FoodShareNet\Repository\obj\Debug\net8.0\ref\
 C:\Users\sergiu.varga\source\repos\FoodShareNet\Repository\bin\Debug\net8.0\FoodShareNet.Repository.runtimeconfig.json
 C:\Users\sergiu.varga\source\repos\FoodShareNet\Repository\obj\Debug\net8.0\FoodShareNet.Repository.genruntimeconfig.cache
 C:\Users\sergiu.varga\source\repos\FoodShareNet\Repository\obj\Debug\net8.0\FoodShareNet.Repository.sourcelink.json
+C:\Users\sergiu.varga\source\repos\FoodShareNet\Repository\bin\Debug\net8.0\FoodShareNet.Application.dll
+C:\Users\sergiu.varga\source\repos\FoodShareNet\Repository\bin\Debug\net8.0\FoodShareNet.Application.pdb

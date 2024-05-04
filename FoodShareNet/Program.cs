@@ -1,7 +1,12 @@
+using FoodShareNet.Application.Interfaces;
+using FoodShareNet.Application.Services;
 using FoodShareNet.Repository.Data;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddScoped<IOrderService, OrderService>();
+builder.Services.AddScoped<IFoodShareDbContext, FoodShareNetDbContext>();
 
 // Add services to the container.
 builder.Services.AddDbContext<FoodShareNetDbContext>

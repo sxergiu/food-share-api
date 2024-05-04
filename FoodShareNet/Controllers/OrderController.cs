@@ -4,14 +4,17 @@ using FoodShareNet.Domain.Entities;
 using FoodShareNet.Repository.Data;
 using FoodShareNetAPI.DTO.Order;
 using OrderStatusEnum = FoodShareNet.Domain.Enums.OrderStatus;
+using FoodShareNet.Application.Interfaces;
 
 [Route("api/[controller]")]
 [ApiController]
 public class OrderController : ControllerBase
 {
     private readonly FoodShareNetDbContext _context;
-    public OrderController(FoodShareNetDbContext context)
+    private readonly IOrderService _orderService;
+    public OrderController(FoodShareNetDbContext context,IOrderService orderService)
     {
+        _orderService = orderService;
         _context = context;
     }
 
@@ -19,28 +22,8 @@ public class OrderController : ControllerBase
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
     [HttpPost]
-    public async Task<ActionResult<OrderDTO>> CreateOrder(CreateOrderDTO createOrderDTO)
+    public async Task<ActionResult<OrderDTO>> CreateOrder([FromBody] CreateOrderDTO createOrderDTO)
     {
-        if( !ModelState.IsValid )
-        {
-            return BadRequest(ModelState);
-        }
-
-        var donation = await _context.Donations
-            .FirstOrDefaultAsync( d => d.Id == createOrderDTO.DonationId );
-
-        if( donation == null )
-        {
-            return NotFound($"Invalid Donation ID: {createOrderDTO.DonationId}. ");
-        }
-
-        if( donation.Quantity < createOrderDTO.Quantity )
-        {
-            return BadRequest("Requested quantity exceeds available donation quantity" +
-                $" for donation with ID: {donation.Id}");
-        }
-
-        donation.Quantity -= createOrderDTO.Quantity;
 
         var order = new Order
         {
@@ -48,23 +31,26 @@ public class OrderController : ControllerBase
             DonationId = createOrderDTO.DonationId,
             CourierId = createOrderDTO.CourierId,
             OrderStatusId = createOrderDTO.OrderStatusId,
-            CreationDate = createOrderDTO.CreationDate
+            CreationDate = createOrderDTO.CreationDate.Date,
+            Quantity = createOrderDTO.Quantity
         };
 
-        _context.Add(order);
-        await _context.SaveChangesAsync();
+        var createdOrder = await _orderService.CreateOrderAsync(order);
 
-        var orderEntityDTO = new OrderDetailsDTO
+        var orderDetails = new OrderDetailsDTO
         {
-            Id = order.Id,
-            BeneficiaryId = order.BeneficiaryId,
-            DonationId = order.DonationId,
-            CourierId = order.CourierId,
-            OrderStatusId = order.OrderStatusId,
-            CreationDate = order.CreationDate
+            Id = createdOrder.Id,
+            BeneficiaryId = createdOrder.BeneficiaryId,
+            CourierId = createdOrder.CourierId,
+            DonationId = createdOrder.DonationId,
+            CreationDate = createdOrder.CreationDate,
+            DeliveryDate = createdOrder.DeliveryDate,
+            OrderStatusId = createdOrder.OrderStatusId,
+            Quantity = createdOrder.Quantity
         };
 
-        return Ok(orderEntityDTO);
+        return Ok(orderDetails);
+
     }
 
     [ProducesResponseType(StatusCodes.Status200OK)]
@@ -73,28 +59,25 @@ public class OrderController : ControllerBase
     [HttpGet()]
     public async Task<ActionResult<OrderDTO>> GetOrder(int id)
     {
-        var orderDTO = await _context.Orders
-            .Select(o => new OrderDTO
-            {
-                Id = o.Id,
-                BeneficiaryId = o.BeneficiaryId,
-                CourierId = o.CourierId,
-                DonationId = o.DonationId,
-                OrderStatusId = o.OrderStatusId,
-                CreationDate = o.CreationDate,
-                BeneficiaryName = o.Beneficiary.Name,
-                CourierName = o.Courier.Name,
-                OrderStatusName = o.OrderStatus.Name,
-                DonationProduct = o.Donation.Product.Name
+        var orderDTO = await _orderService.GetOrderAsync(id);
 
-            }).FirstOrDefaultAsync(a => a.Id == id);
-
-        if( orderDTO == null )
+        var order = new OrderDTO
         {
-            return NotFound();
-        }
+            Id = orderDTO.Id,
+            BeneficiaryId = orderDTO.BeneficiaryId,
+            BeneficiaryName = orderDTO.Beneficiary.Name,
+            CourierId = orderDTO.CourierId,
+            CourierName = orderDTO.Courier.Name,
+            DonationId = orderDTO.DonationId,
+            DonationProduct = orderDTO.Donation.Product.Name,
+            CreationDate = orderDTO.CreationDate,
+            DeliveryDate = orderDTO.DeliveryDate,
+            OrderStatusId = orderDTO.OrderStatusId,
+            OrderStatusName = orderDTO.OrderStatus.Name,
+            Quantity = orderDTO.Quantity
+        };
 
-        return Ok(orderDTO);
+        return Ok(order);
     }
 
     [ProducesResponseType(StatusCodes.Status200OK)]
@@ -106,19 +89,8 @@ public class OrderController : ControllerBase
     {
         if( orderId != updateStatusDTO.OrderId ) { return BadRequest(); }
 
-        var order = await _context.Orders.FirstOrDefaultAsync(o => o.Id == orderId );
+        var order = await _orderService.UpdateOrderStatusAsync(orderId, (FoodShareNet.Domain.Enums.OrderStatus) updateStatusDTO.NewStatusId);
 
-        if( order == null ) { return NotFound();  }
-
-        if (!_context.orderStatuses.Any(s => s.Id == updateStatusDTO.NewStatusId))
-        {
-            return NotFound($"Status with ID {updateStatusDTO.NewStatusId} not found.");
-        }
-
-        order.OrderStatusId = updateStatusDTO.NewStatusId;
-        order.DeliveryDate = updateStatusDTO.NewStatusId == (int)OrderStatusEnum.Delivered ? DateTime.UtcNow : order.DeliveryDate;
-
-        await _context.SaveChangesAsync();
         return Ok(order);
     }
 }

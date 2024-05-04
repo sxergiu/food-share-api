@@ -1,4 +1,5 @@
-﻿using FoodShareNet.Domain.Entities;
+﻿using FoodShareNet.Application.Interfaces;
+using FoodShareNet.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -11,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace FoodShareNet.Repository.Data
 {
-    public class FoodShareNetDbContext : DbContext
+    public class FoodShareNetDbContext : DbContext, IFoodShareDbContext
     {
 
         public FoodShareNetDbContext(DbContextOptions<FoodShareNetDbContext> options) : base(options) {

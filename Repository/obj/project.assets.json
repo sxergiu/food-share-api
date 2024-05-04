@@ -1503,6 +1503,20 @@
           }
         }
       },
+      "FoodShareNet.Application/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "FoodShareNet.Domain": "1.0.0",
+          "Microsoft.EntityFrameworkCore": "8.0.3"
+        },
+        "compile": {
+          "bin/placeholder/FoodShareNet.Application.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/FoodShareNet.Application.dll": {}
+        }
+      },
       "FoodShareNet.Domain/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
@@ -4107,6 +4121,11 @@
         "useSharedDesignerContext.txt"
       ]
     },
+    "FoodShareNet.Application/1.0.0": {
+      "type": "project",
+      "path": "../FoodShareNet.Application/FoodShareNet.Application.csproj",
+      "msbuildProject": "../FoodShareNet.Application/FoodShareNet.Application.csproj"
+    },
     "FoodShareNet.Domain/1.0.0": {
       "type": "project",
       "path": "../Domain/FoodShareNet.Domain.csproj",
@@ -4115,6 +4134,7 @@
   },
   "projectFileDependencyGroups": {
     "net8.0": [
+      "FoodShareNet.Application >= 1.0.0",
       "FoodShareNet.Domain >= 1.0.0",
       "Microsoft.EntityFrameworkCore >= 8.0.3",
       "Microsoft.EntityFrameworkCore.Design >= 8.0.3",
@@ -4151,6 +4171,9 @@
           "projectReferences": {
             "C:\\Users\\sergiu.varga\\source\\repos\\FoodShareNet\\Domain\\FoodShareNet.Domain.csproj": {
               "projectPath": "C:\\Users\\sergiu.varga\\source\\repos\\FoodShareNet\\Domain\\FoodShareNet.Domain.csproj"
+            },
+            "C:\\Users\\sergiu.varga\\source\\repos\\FoodShareNet\\FoodShareNet.Application\\FoodShareNet.Application.csproj": {
+              "projectPath": "C:\\Users\\sergiu.varga\\source\\repos\\FoodShareNet\\FoodShareNet.Application\\FoodShareNet.Application.csproj"
             }
           }
         }

@@ -21,6 +21,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Domain\FoodShareNet.Domain.csproj" />
+    <ProjectReference Include="..\FoodShareNet.Application\FoodShareNet.Application.csproj" />
   </ItemGroup>
 
 </Project>

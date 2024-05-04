@@ -9,6 +9,7 @@
         public DateTime CreationDate { get; set; }
         public DateTime? DeliveryDate { get; set; }
         public int OrderStatusId { get; set; }
+        public int Quantity {  get; set; }
 
     }
 }
