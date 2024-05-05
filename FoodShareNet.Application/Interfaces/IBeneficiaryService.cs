@@ -12,8 +12,8 @@ namespace FoodShareNet.Application.Interfaces
         Task<IList<Beneficiary>> GetAllBeneficiariesAsync();
         Task<Beneficiary> GetBeneficiaryByIdAsync(int id);
         Task<Beneficiary> CreateBeneficiaryAsync(Beneficiary beneficiary);
-        Task<bool> EditBeneficiaryAsync(int id, Beneficiary beneficiary);
-        Task<bool> DeleteBeneficiaryAsync(string id);
+        Task<Beneficiary> EditBeneficiaryAsync(int id, Beneficiary beneficiary);
+        Task<bool> DeleteBeneficiaryAsync(int id);
 
 
     }

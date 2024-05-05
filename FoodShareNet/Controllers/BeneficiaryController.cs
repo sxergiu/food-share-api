@@ -1,9 +1,7 @@
-﻿using FoodShareNet.Domain.Entities;
-using FoodShareNet.Repository.Data;
+﻿using FoodShareNet.Application.Interfaces;
+using FoodShareNet.Domain.Entities;
 using FoodShareNetAPI.DTO.Beneficiary;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace FoodShareNetAPI.Controllers
 {
@@ -11,11 +9,11 @@ namespace FoodShareNetAPI.Controllers
     [ApiController]
     public class BeneficiaryController : ControllerBase
     {
-        private readonly FoodShareNetDbContext _context;
+        private readonly IBeneficiaryService _beneficiaryService;
 
-        public BeneficiaryController(FoodShareNetDbContext context)
+        public BeneficiaryController(IBeneficiaryService beneficiaryService)
         {
-            _context = context;
+            _beneficiaryService = beneficiaryService;
         }
 
         [ProducesResponseType(typeof(IList<BeneficiaryDTO>),StatusCodes.Status200OK)]
@@ -25,8 +23,9 @@ namespace FoodShareNetAPI.Controllers
         public async Task<ActionResult<List<BeneficiaryDTO>>> GetAllAsync()
         {
 
-            var beneficiaries = await _context.Beneficiaries
-                .Include(b => b.City)
+            var beneficiaries = await _beneficiaryService.GetAllBeneficiariesAsync();
+                
+            var beneficiariesDTO = beneficiaries
                 .Select(b => new BeneficiaryDTO
                 {
                     Id = b.Id,
@@ -34,10 +33,9 @@ namespace FoodShareNetAPI.Controllers
                     Address = b.Address,
                     Capacity = b.Capacity,
                     CityName = b.City.Name
+                }).ToList();
 
-                }).ToListAsync();
-
-            return Ok(beneficiaries);
+            return Ok(beneficiariesDTO);
         }
 
 
@@ -46,24 +44,24 @@ namespace FoodShareNetAPI.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         [HttpGet]
-        public async Task<ActionResult<BeneficiaryDTO>> GetAsync(int? id)
+        public async Task<ActionResult<BeneficiaryDTO>> GetAsync(int id)
         {
-            var beneficiaryDTO = await _context.Beneficiaries
-                .Select(b => new BeneficiaryDTO
+            try
+            {
+                var b = await _beneficiaryService.GetBeneficiaryByIdAsync(id);
+
+                var beneficiaryDTO = new BeneficiaryDTO
                 {
                     Id = b.Id,
-                    Name= b.Name,
-                    Address= b.Address,
-                    Capacity= b.Capacity,
+                    Name = b.Name,
+                    Address = b.Address,
+                    Capacity = b.Capacity,
                     CityName = b.City.Name
-                }).FirstOrDefaultAsync(a => a.Id == id);
+                };
 
-            if( beneficiaryDTO == null )
-            {
-                return NotFound();
+                return Ok(beneficiaryDTO);
             }
-
-            return Ok(beneficiaryDTO);
+            catch (Exception e) { return NotFound(e.Message); }
         }
 
         [ProducesResponseType(typeof(BeneficiaryDetailDTO),
@@ -87,16 +85,15 @@ namespace FoodShareNetAPI.Controllers
                 Capacity = createBeneficiaryDTO.Capacity
             };
 
-            _context.Add(beneficiary);
-            await _context.SaveChangesAsync();
+            var createdBeneficiary = await _beneficiaryService.CreateBeneficiaryAsync(beneficiary);
 
             var beneficiaryEntityDTO = new BeneficiaryDetailDTO
             {
-                Id = beneficiary.Id,
-                Name = beneficiary.Name,
-                Address = beneficiary.Address,
-                CityId = beneficiary.CityId,
-                Capacity = beneficiary.Capacity
+                Id = createdBeneficiary.Id,
+                Name = createdBeneficiary.Name,
+                Address = createdBeneficiary.Address,
+                CityId = createdBeneficiary.CityId,
+                Capacity = createdBeneficiary.Capacity
             };
 
             return Ok(beneficiaryEntityDTO);
@@ -112,27 +109,29 @@ namespace FoodShareNetAPI.Controllers
             EditAsync(int id, EditBeneficiaryDTO editBeneficiaryDTO)
         {
 
-            if( id != editBeneficiaryDTO.Id )
+            if (id != editBeneficiaryDTO.Id)
             {
                 return BadRequest("Invalid Id!");
             }
 
-            var beneficiary = await _context.Beneficiaries
-                .FirstOrDefaultAsync(b => b.Id == editBeneficiaryDTO.Id);
-
-            if( beneficiary == null )
+            var beneficiary = new Beneficiary
             {
-                return NotFound();
+                Name = editBeneficiaryDTO.Name,
+                Address = editBeneficiaryDTO.Address,
+                CityId = editBeneficiaryDTO.CityId,
+                Capacity = editBeneficiaryDTO.Capacity
+            };
+
+            try
+            {
+                var editedBeneficiary = await _beneficiaryService.EditBeneficiaryAsync(id, beneficiary);
             }
-
-            beneficiary.Name = editBeneficiaryDTO.Name;
-            beneficiary.Address = editBeneficiaryDTO.Address;
-            beneficiary.CityId = editBeneficiaryDTO.CityId;
-            beneficiary.Capacity = editBeneficiaryDTO.Capacity;
-
-            await _context.SaveChangesAsync();  
-
+            catch(Exception e)
+            {
+                return NotFound(e.Message);
+            }
             return NoContent();
+
         }
 
 
@@ -142,13 +141,15 @@ namespace FoodShareNetAPI.Controllers
         [HttpDelete]
         public async Task<IActionResult> DeleteAsync(int id)
         {
-            var beneficiary = await _context.Beneficiaries.FindAsync(id);
-
-            if( beneficiary == null ) { return NotFound(); }    
-
-            _context.Beneficiaries.Remove(beneficiary);
-            await _context.SaveChangesAsync();
-
+            try
+            {
+              await _beneficiaryService.DeleteBeneficiaryAsync(id);
+            }
+            catch(Exception e)
+            {
+                return NotFound(e.Message);
+            }
+           
             return NoContent();
         }
 

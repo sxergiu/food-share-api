@@ -12,7 +12,7 @@ namespace FoodShareNet.Application.Interfaces
         Task<IList<Donor>> GetAllDonorsAsync();
         Task<Donor> GetDonorByIdAsync(int id);
         Task<Donor> CreateDonorAsync(Donor donor);
-        Task<bool> EditDonorAsync(int id,Donor donor);
+        Task<Donor> EditDonorAsync(int id,Donor donor);
         Task<bool> DeleteDonorAsync(int id);
 
     }

@@ -1,5 +1,8 @@
-﻿using FoodShareNet.Application.Interfaces;
+﻿using FoodShareNet.Application.Exceptions;
+using FoodShareNet.Application.Interfaces;
 using FoodShareNet.Domain.Entities;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,29 +13,78 @@ namespace FoodShareNet.Application.Services
 {
     public class BeneficiaryService : IBeneficiaryService
     {
-        public Task<Beneficiary> CreateBeneficiaryAsync(Beneficiary beneficiary)
+        private readonly IFoodShareDbContext _context;
+
+        public BeneficiaryService(IFoodShareDbContext context)
         {
-            throw new NotImplementedException();
+            _context = context;
         }
 
-        public Task<bool> DeleteBeneficiaryAsync(string id)
+        public async Task<Beneficiary> CreateBeneficiaryAsync(Beneficiary beneficiary)
         {
-            throw new NotImplementedException();
+            _context.Beneficiaries.Add(beneficiary);
+            await _context.SaveChangesAsync();
+            return beneficiary;
         }
 
-        public Task<bool> EditBeneficiaryAsync(int id, Beneficiary beneficiary)
+        public async Task<bool> DeleteBeneficiaryAsync(int id)
         {
-            throw new NotImplementedException();
+            var beneficiary = await _context.Beneficiaries.FindAsync(id);
+
+            if(beneficiary == null) { throw new NotFoundException("beneficiary", id);  }
+
+            _context.Beneficiaries.Remove(beneficiary);
+            await _context.SaveChangesAsync();
+            return true;
+
         }
 
-        public Task<IList<Beneficiary>> GetAllBeneficiariesAsync()
+        public async Task<Beneficiary> EditBeneficiaryAsync(int id, Beneficiary EditBeneficiary)
         {
-            throw new NotImplementedException();
+            var beneficiary = await _context.Beneficiaries
+            .FirstOrDefaultAsync(b => b.Id == id);
+
+            if( beneficiary is null ) { throw new NotFoundException("beneficiary",id); }
+
+            beneficiary.Name = EditBeneficiary.Name;
+            beneficiary.Address = EditBeneficiary.Address;
+            beneficiary.Capacity = EditBeneficiary.Capacity;
+            beneficiary.CityId = EditBeneficiary.CityId;
+
+            await _context.SaveChangesAsync();
+            return beneficiary;
         }
 
-        public Task<Beneficiary> GetBeneficiaryByIdAsync(int id)
+        public async Task<IList<Beneficiary>> GetAllBeneficiariesAsync()
         {
-            throw new NotImplementedException();
+            var beneficiaries = await _context.Beneficiaries
+                .Include(b => b.City)
+                .Select(b => new Beneficiary
+                {
+                    Id = b.Id,
+                    Name = b.Name,
+                    Address = b.Address,
+                    Capacity = b.Capacity,
+                    City = b.City
+                }).ToListAsync();
+            return beneficiaries;
+        }
+
+        public async Task<Beneficiary> GetBeneficiaryByIdAsync(int id)
+        {
+            var beneficiary = await _context.Beneficiaries
+                .Select(b => new Beneficiary
+                {
+                    Id = b.Id,
+                    Name = b.Name,
+                    Address = b.Address,
+                    Capacity = b.Capacity,
+                    City = b.City
+                }).FirstOrDefaultAsync(a => a.Id == id);
+
+            if( beneficiary is null) { throw new NotFoundException("beneficiary"); }
+
+            return beneficiary;
         }
     }
 }

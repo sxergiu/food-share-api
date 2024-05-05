@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("FoodShareNet.Repository")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+db47d69ad950bfdc1954d856079ed9a046b83a1d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c570a3e056160dbdc877c36cfcf327d0a6442537")]
 [assembly: System.Reflection.AssemblyProductAttribute("FoodShareNet.Repository")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FoodShareNet.Repository")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

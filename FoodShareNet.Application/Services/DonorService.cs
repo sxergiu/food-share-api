@@ -1,5 +1,7 @@
-﻿using FoodShareNet.Application.Interfaces;
+﻿using FoodShareNet.Application.Exceptions;
+using FoodShareNet.Application.Interfaces;
 using FoodShareNet.Domain.Entities;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,29 +12,95 @@ namespace FoodShareNet.Application.Services
 {
     public class DonorService : IDonorService
     {
-        public Task<Donor> CreateDonorAsync(Donor donor)
+        private readonly IFoodShareDbContext _context;
+
+        public DonorService(IFoodShareDbContext context)
         {
-            throw new NotImplementedException();
+            _context = context;
         }
 
-        public Task<bool> DeleteDonorAsync(int id)
+        public async Task<Donor> CreateDonorAsync(Donor donor)
         {
-            throw new NotImplementedException();
+            _context.Donors.Add(donor);
+            await _context.SaveChangesAsync();
+            return donor;
         }
 
-        public Task<bool> EditDonorAsync(int id, Donor donor)
+        public async Task<bool> DeleteDonorAsync(int id)
         {
-            throw new NotImplementedException();
+            var donor = await _context.Donors.FirstOrDefaultAsync(d => d.Id == id);
+
+            if (donor == null) { throw new NotFoundException("donor", id); }
+
+            _context.Donors.Remove(donor);
+            await _context.SaveChangesAsync();
+            return true;
         }
 
-        public Task<IList<Donor>> GetAllDonorsAsync()
+        public async Task<Donor> EditDonorAsync(int id, Donor editDonor)
         {
-            throw new NotImplementedException();
+            var donor = await _context.Donors.FirstOrDefaultAsync(d => d.Id == id);
+
+            if( donor  == null ) { throw new NotFoundException("donor",id); }
+
+            donor.Name = editDonor.Name;
+            donor.Address = editDonor.Address;
+            donor.CityId = editDonor.CityId;
+
+            await _context.SaveChangesAsync();
+            return donor;
         }
 
-        public Task<Donor> GetDonorByIdAsync(int id)
+        public async Task<IList<Donor>> GetAllDonorsAsync()
         {
-            throw new NotImplementedException();
+            var donors = await _context.Donors
+            .Select(d => new Donor
+            {
+                Id = d.Id,
+                Name = d.Name,
+                Address = d.Address,
+                CityId = d.CityId,
+                City = d.City,
+                Donations = d.Donations.Select(donation => new Donation
+                {
+                    Id = donation.Id,
+                    Product = donation.Product,
+                    Quantity = donation.Quantity,
+                    Status = donation.Status,
+                    ExpirationDate = donation.ExpirationDate
+                }).ToList()
+
+            }).ToListAsync();
+
+            if (donors.Count == 0)
+            {
+                throw new NotFoundException("donors");
+            }
+            return donors;
+        }
+
+        public async Task<Donor> GetDonorByIdAsync(int id)
+        {
+            var donor = await _context.Donors.Select(d => new Donor
+            {
+                Id = d.Id,
+                Name = d.Name,
+                Address = d.Address,
+                City = d.City,
+                Donations = d.Donations.Select(donation => new Donation
+                {
+                    Id = donation.Id,
+                    Product = donation.Product,
+                    ExpirationDate = donation.ExpirationDate,
+                    Status = donation.Status,
+                    Quantity = donation.Quantity
+                }).ToList()
+
+            }).FirstOrDefaultAsync(a => a.Id == id);
+
+            if ( donor == null ) { throw new NotFoundException("donor");  }
+
+            return donor;
         }
     }
 }

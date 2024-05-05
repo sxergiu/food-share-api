@@ -11,6 +11,6 @@ namespace FoodShareNet.Application.Interfaces
     {
         Task<Donation> CreateDonationAsync(Donation donation);
         Task<Donation> GetDonationByIdAsync(int id);
-        Task<IList<Donation>> GetDonationsByCityNameAsync(string cityName);
+        Task<IList<Donation>> GetDonationsByCityIdAsync(int id);
     }
 }

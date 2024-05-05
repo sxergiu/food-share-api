@@ -1,17 +1,16 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using FoodShareNetAPI.DTO.Product;
-using FoodShareNet.Repository.Data;
-using Microsoft.EntityFrameworkCore;
+using FoodShareNet.Application.Interfaces;
 
 
 [Route("api/[controller]")]
 [ApiController]
 public class ProductController : ControllerBase
 {
-    private readonly FoodShareNetDbContext _context;
-    public ProductController(FoodShareNetDbContext context)
+    private readonly IProductService _productService;
+    public ProductController(IProductService productService)
     {
-        _context = context;
+        _productService = productService;
     }
 
     [ProducesResponseType(StatusCodes.Status200OK)]
@@ -20,15 +19,14 @@ public class ProductController : ControllerBase
     [HttpGet]
     public async Task<ActionResult<IList<ProductDTO>>> GetAllAsync()
     {
-        var products = await _context.Products.Select(p => new ProductDTO
+        try
         {
-            Id = p.Id,
-            Name = p.Name
-        }).ToListAsync();
-
-        if( products.Count == 0 ) { return NotFound(); }
-
-        return Ok(products);
+            var products = await _productService.GetAllProductsAsync();
+            return Ok(products);
+        }
+        catch(Exception e) { 
+            return NotFound(e.Message); 
+        }
     }
 
 }

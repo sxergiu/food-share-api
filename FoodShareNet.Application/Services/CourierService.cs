@@ -2,11 +2,6 @@
 using FoodShareNet.Application.Interfaces;
 using FoodShareNet.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FoodShareNet.Application.Services
 {
@@ -28,7 +23,7 @@ namespace FoodShareNet.Application.Services
                 Price = c.Price
             }).ToListAsync();
 
-            if (couriers is null)
+            if (couriers.Count == 0)
                 throw new NotFoundException("couriers");
 
             return couriers;
