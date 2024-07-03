@@ -22,7 +22,14 @@ public class ProductController : ControllerBase
         try
         {
             var products = await _productService.GetAllProductsAsync();
-            return Ok(products);
+
+            var productDTOS = products.Select( p => new ProductDTO
+            {
+                Id = p.Id,
+                Name = p.Name
+            }).ToList();
+
+            return Ok(productDTOS);
         }
         catch(Exception e) { 
             return NotFound(e.Message); 

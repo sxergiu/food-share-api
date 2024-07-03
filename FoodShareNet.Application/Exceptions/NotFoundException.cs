@@ -9,7 +9,7 @@ namespace FoodShareNet.Application.Exceptions
     internal class NotFoundException : Exception
     {
 
-        public NotFoundException(string name,object key) : base($"Enity '{name}' ({key} was not found.")
+        public NotFoundException(string name,object key) : base($"Enity '{name}' ({key}) was not found.")
         { 
         }
 

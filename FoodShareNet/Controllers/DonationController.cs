@@ -38,18 +38,18 @@ public class DonationController : ControllerBase
 
         var createdDonation = await _donationService.CreateDonationAsync(donation);
 
-        var donationEntityDTO = new DonationDetailDTO
+        var donationDetailDTO = new DonationDetailDTO
         {
-            Id = donation.Id,
-            DonorId = donation.DonorId,
-           // Product = donation.Product.Name,
-            Quantity = donation.Quantity,
-            ExpirationDate = donation.ExpirationDate,
-            StatusId = donation.StatusId,
-           // Status = donation.Status.Name
+           Id = createdDonation.Id,
+           DonorId = createdDonation.DonorId,
+           //Product = createdDonation.Product.Name,
+           Quantity = createdDonation.Quantity,
+           ExpirationDate = createdDonation.ExpirationDate,
+           StatusId = createdDonation.StatusId,
+           //Status = createdDonation.Status.Name
         };
 
-        return Ok(donationEntityDTO);
+        return Ok(donationDetailDTO);
     }
 
     [ProducesResponseType(StatusCodes.Status200OK)]

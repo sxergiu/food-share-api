@@ -125,7 +125,7 @@ public class DonorController : ControllerBase
         {
             Name = editDonorDTO.Name,
             Address = editDonorDTO.Address,
-            CityId = editDonorDTO.CityId,
+            CityId = editDonorDTO.CityId
         };
 
         try

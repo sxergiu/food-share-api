@@ -1,9 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using FoodShareNet.Domain.Entities;
-using FoodShareNet.Repository.Data;
 using FoodShareNetAPI.DTO.Order;
-using OrderStatusEnum = FoodShareNet.Domain.Enums.OrderStatus;
 using FoodShareNet.Application.Interfaces;
 
 [Route("api/[controller]")]
@@ -57,25 +54,25 @@ public class OrderController : ControllerBase
     [HttpGet()]
     public async Task<ActionResult<OrderDTO>> GetOrder(int id)
     {
-        var orderDTO = await _orderService.GetOrderAsync(id);
+        var order = await _orderService.GetOrderAsync(id);
 
-        var order = new OrderDTO
+        var orderDTO = new OrderDTO
         {
-            Id = orderDTO.Id,
-            BeneficiaryId = orderDTO.BeneficiaryId,
-            BeneficiaryName = orderDTO.Beneficiary.Name,
-            CourierId = orderDTO.CourierId,
-            CourierName = orderDTO.Courier.Name,
-            DonationId = orderDTO.DonationId,
-            DonationProduct = orderDTO.Donation.Product.Name,
-            CreationDate = orderDTO.CreationDate,
-            DeliveryDate = orderDTO.DeliveryDate,
-            OrderStatusId = orderDTO.OrderStatusId,
-            OrderStatusName = orderDTO.OrderStatus.Name,
-            Quantity = orderDTO.Quantity
+            Id = order.Id,
+            BeneficiaryId = order.BeneficiaryId,
+            BeneficiaryName = order.Beneficiary.Name,
+            CourierId = order.CourierId,
+            CourierName = order.Courier.Name,
+            DonationId = order.DonationId,
+            DonationProduct = order.Donation.Product.Name,
+            CreationDate = order.CreationDate,
+            DeliveryDate = order.DeliveryDate,
+            OrderStatusId = order.OrderStatusId,
+            OrderStatusName = order.OrderStatus.Name,
+            Quantity = order.Quantity
         };
 
-        return Ok(order);
+        return Ok(orderDTO);
     }
 
     [ProducesResponseType(StatusCodes.Status200OK)]
@@ -85,7 +82,7 @@ public class OrderController : ControllerBase
     [HttpPatch()]
     public async Task<IActionResult> UpdateOrderStatus(int orderId, [FromBody] UpdateOrderStatusDTO updateStatusDTO)
     {
-        if( orderId != updateStatusDTO.OrderId ) { return BadRequest(); }
+        if( orderId != updateStatusDTO.OrderId ) { return BadRequest("Mismatched Id!"); }
 
         var order = await _orderService.UpdateOrderStatusAsync(orderId, (FoodShareNet.Domain.Enums.OrderStatus) updateStatusDTO.NewStatusId);
 

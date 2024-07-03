@@ -3,24 +3,22 @@
   "WorkspaceRootPath": "C:\\Users\\sergiu.varga\\source\\repos\\FoodShareNet\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{8197B4B2-5487-4DAE-8CBA-4B6AD7F13398}|FoodShareNet\\FoodShareNetAPI.csproj|c:\\users\\sergiu.varga\\source\\repos\\foodsharenet\\foodsharenet\\controllers\\donorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8197B4B2-5487-4DAE-8CBA-4B6AD7F13398}|FoodShareNet\\FoodShareNetAPI.csproj|solutionrelative:foodsharenet\\controllers\\donorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/FoodShareDB/True/SqlTable/dbo.Donations.sql||{0058A1F7-65F3-4DB9-B3D0-CA7E64DD73CD}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8197B4B2-5487-4DAE-8CBA-4B6AD7F13398}|FoodShareNet\\FoodShareNetAPI.csproj|c:\\users\\sergiu.varga\\source\\repos\\foodsharenet\\foodsharenet\\controllers\\beneficiarycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8197B4B2-5487-4DAE-8CBA-4B6AD7F13398}|FoodShareNet\\FoodShareNetAPI.csproj|solutionrelative:foodsharenet\\controllers\\beneficiarycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/FoodShareDB/True/SqlTable/dbo.Donors.sql||{0058A1F7-65F3-4DB9-B3D0-CA7E64DD73CD}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8845B7EA-FE45-4454-AFB4-AE3B7EC17F3A}|FoodShareNet.Application\\FoodShareNet.Application.csproj|c:\\users\\sergiu.varga\\source\\repos\\foodsharenet\\foodsharenet.application\\services\\beneficiaryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8845B7EA-FE45-4454-AFB4-AE3B7EC17F3A}|FoodShareNet.Application\\FoodShareNet.Application.csproj|solutionrelative:foodsharenet.application\\services\\beneficiaryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{8197B4B2-5487-4DAE-8CBA-4B6AD7F13398}|FoodShareNet\\FoodShareNetAPI.csproj|c:\\users\\sergiu.varga\\source\\repos\\foodsharenet\\foodsharenet\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8197B4B2-5487-4DAE-8CBA-4B6AD7F13398}|FoodShareNet\\FoodShareNetAPI.csproj|solutionrelative:foodsharenet\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8845B7EA-FE45-4454-AFB4-AE3B7EC17F3A}|FoodShareNet.Application\\FoodShareNet.Application.csproj|c:\\users\\sergiu.varga\\source\\repos\\foodsharenet\\foodsharenet.application\\services\\donorservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8845B7EA-FE45-4454-AFB4-AE3B7EC17F3A}|FoodShareNet.Application\\FoodShareNet.Application.csproj|solutionrelative:foodsharenet.application\\services\\donorservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E007A679-3CAE-47F7-A598-862A97D5C627}|FoodShareNet.UnitTests\\FoodShareNet.UnitTests.csproj|c:\\users\\sergiu.varga\\source\\repos\\foodsharenet\\foodsharenet.unittests\\orderservicetests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E007A679-3CAE-47F7-A598-862A97D5C627}|FoodShareNet.UnitTests\\FoodShareNet.UnitTests.csproj|solutionrelative:foodsharenet.unittests\\orderservicetests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8845B7EA-FE45-4454-AFB4-AE3B7EC17F3A}|FoodShareNet.Application\\FoodShareNet.Application.csproj|c:\\users\\sergiu.varga\\source\\repos\\foodsharenet\\foodsharenet.application\\interfaces\\idonorservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8845B7EA-FE45-4454-AFB4-AE3B7EC17F3A}|FoodShareNet.Application\\FoodShareNet.Application.csproj|solutionrelative:foodsharenet.application\\interfaces\\idonorservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{8845B7EA-FE45-4454-AFB4-AE3B7EC17F3A}|FoodShareNet.Application\\FoodShareNet.Application.csproj|c:\\users\\sergiu.varga\\source\\repos\\foodsharenet\\foodsharenet.application\\services\\orderservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8845B7EA-FE45-4454-AFB4-AE3B7EC17F3A}|FoodShareNet.Application\\FoodShareNet.Application.csproj|solutionrelative:foodsharenet.application\\services\\orderservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,71 +28,65 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "IDonorService.cs",
-              "DocumentMoniker": "C:\\Users\\sergiu.varga\\source\\repos\\FoodShareNet\\FoodShareNet.Application\\Interfaces\\IDonorService.cs",
-              "RelativeDocumentMoniker": "FoodShareNet.Application\\Interfaces\\IDonorService.cs",
-              "ToolTip": "C:\\Users\\sergiu.varga\\source\\repos\\FoodShareNet\\FoodShareNet.Application\\Interfaces\\IDonorService.cs",
-              "RelativeToolTip": "FoodShareNet.Application\\Interfaces\\IDonorService.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAASAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-05T15:48:48.309Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "BeneficiaryController.cs",
-              "DocumentMoniker": "C:\\Users\\sergiu.varga\\source\\repos\\FoodShareNet\\FoodShareNet\\Controllers\\BeneficiaryController.cs",
-              "RelativeDocumentMoniker": "FoodShareNet\\Controllers\\BeneficiaryController.cs",
-              "ToolTip": "C:\\Users\\sergiu.varga\\source\\repos\\FoodShareNet\\FoodShareNet\\Controllers\\BeneficiaryController.cs",
-              "RelativeToolTip": "FoodShareNet\\Controllers\\BeneficiaryController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAJEAAAAOAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-05T15:47:33.231Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "BeneficiaryService.cs",
-              "DocumentMoniker": "C:\\Users\\sergiu.varga\\source\\repos\\FoodShareNet\\FoodShareNet.Application\\Services\\BeneficiaryService.cs",
-              "RelativeDocumentMoniker": "FoodShareNet.Application\\Services\\BeneficiaryService.cs",
-              "ToolTip": "C:\\Users\\sergiu.varga\\source\\repos\\FoodShareNet\\FoodShareNet.Application\\Services\\BeneficiaryService.cs",
-              "RelativeToolTip": "FoodShareNet.Application\\Services\\BeneficiaryService.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAAHAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-05T14:49:53.933Z",
+              "Title": "dbo.Donors [Data]",
+              "DocumentMoniker": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/FoodShareDB/True/SqlTable/dbo.Donors.sql",
+              "ToolTip": "dbo.Donors [Data]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2024-06-12T11:12:48.663Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "DonorController.cs",
-              "DocumentMoniker": "C:\\Users\\sergiu.varga\\source\\repos\\FoodShareNet\\FoodShareNet\\Controllers\\DonorController.cs",
-              "RelativeDocumentMoniker": "FoodShareNet\\Controllers\\DonorController.cs",
-              "ToolTip": "C:\\Users\\sergiu.varga\\source\\repos\\FoodShareNet\\FoodShareNet\\Controllers\\DonorController.cs",
-              "RelativeToolTip": "FoodShareNet\\Controllers\\DonorController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAEAAAAAAAAA",
+              "Title": "dbo.Donations [Data]",
+              "DocumentMoniker": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/FoodShareDB/True/SqlTable/dbo.Donations.sql",
+              "ToolTip": "dbo.Donations [Data]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2024-06-12T11:12:44.27Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\sergiu.varga\\source\\repos\\FoodShareNet\\FoodShareNet\\Program.cs",
+              "RelativeDocumentMoniker": "FoodShareNet\\Program.cs",
+              "ToolTip": "C:\\Users\\sergiu.varga\\source\\repos\\FoodShareNet\\FoodShareNet\\Program.cs",
+              "RelativeToolTip": "FoodShareNet\\Program.cs",
+              "ViewState": "AQIAAB4AAAAAAAAAAAAAACoAAAAYAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-05T14:43:29.263Z",
+              "WhenOpened": "2024-06-06T15:34:54.964Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "OrderService.cs",
+              "DocumentMoniker": "C:\\Users\\sergiu.varga\\source\\repos\\FoodShareNet\\FoodShareNet.Application\\Services\\OrderService.cs",
+              "RelativeDocumentMoniker": "FoodShareNet.Application\\Services\\OrderService.cs",
+              "ToolTip": "C:\\Users\\sergiu.varga\\source\\repos\\FoodShareNet\\FoodShareNet.Application\\Services\\OrderService.cs",
+              "RelativeToolTip": "FoodShareNet.Application\\Services\\OrderService.cs",
+              "ViewState": "AQIAADsAAAAAAAAAAAAgwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-30T14:46:07.919Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "DonorService.cs",
-              "DocumentMoniker": "C:\\Users\\sergiu.varga\\source\\repos\\FoodShareNet\\FoodShareNet.Application\\Services\\DonorService.cs",
-              "RelativeDocumentMoniker": "FoodShareNet.Application\\Services\\DonorService.cs",
-              "ToolTip": "C:\\Users\\sergiu.varga\\source\\repos\\FoodShareNet\\FoodShareNet.Application\\Services\\DonorService.cs",
-              "RelativeToolTip": "FoodShareNet.Application\\Services\\DonorService.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAACQAAAAYAAAA",
+              "Title": "OrderServiceTests.cs",
+              "DocumentMoniker": "C:\\Users\\sergiu.varga\\source\\repos\\FoodShareNet\\FoodShareNet.UnitTests\\OrderServiceTests.cs",
+              "RelativeDocumentMoniker": "FoodShareNet.UnitTests\\OrderServiceTests.cs",
+              "ToolTip": "C:\\Users\\sergiu.varga\\source\\repos\\FoodShareNet\\FoodShareNet.UnitTests\\OrderServiceTests.cs",
+              "RelativeToolTip": "FoodShareNet.UnitTests\\OrderServiceTests.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABsAAAAOAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-05T14:43:22.653Z",
+              "WhenOpened": "2024-05-30T14:44:47.855Z",
               "EditorCaption": ""
             }
           ]

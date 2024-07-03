@@ -17,8 +17,16 @@ public class CourierController : ControllerBase
     [HttpGet]
     public async Task<ActionResult<IList<CourierDTO>>> GetAllAsync()
     {
-            var couriers = await _courierService.GetCouriersAsync();
-            return Ok(couriers);
+        var couriers = await _courierService.GetCouriersAsync();
+
+        var courierDTOS = couriers.Select(c => new CourierDTO
+        {
+            Id = c.Id,
+            Name = c.Name,
+            Price = c.Price
+        }).ToList();
+           
+        return Ok(courierDTOS);
     }
 
 }
